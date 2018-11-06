@@ -11,14 +11,26 @@ $(document).ready(function () {
     });
 
 
-    // function resizeText(multiplier) {
-    //     if (document.body.style.fontSize == "") {
-    //         document.body.style.fontSize = "1.0em";
-    //     }
-    //     document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
-    // }
+    $(document).keydown(function(event){
+        var fontSize = $('#tail').css('font-size');
+        var newFontSize=fontSize;
+    if(event.ctrlKey){
+        //console.log("cwcwac");
+        //var tmp = event.clientX;
 
 
+         newFontSize= parseInt(fontSize)+5;
+
+
+
+        // evt.clientX + "\n"
+        // + "clientY value: " + evt.clientY + "\n"
+        }else if(event.shiftKey){
+         newFontSize= parseInt(fontSize)-5;
+
+    }
+        $('#tail').css('font-size', newFontSize+'px')
+    })
 });
 function switcheroo() {
     setTimeout(function(){
@@ -30,10 +42,6 @@ function switcheroo() {
 };
 
 function overel(color) {
-
     var x = document.getElementById("tail");
     x.style.color = color;
-    // var y = document.getElementById("div2");
-    // x.style.color = 'red';
-    // y.style.color = 'black';
 };
