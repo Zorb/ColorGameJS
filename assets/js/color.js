@@ -20,6 +20,15 @@ $(document).ready(function () {
 
 
 });
+function switcheroo() {
+    setTimeout(function(){
+    var x = document.getElementById("tail").innerText;
+    var y = $('#switch').val();
+    document.getElementById("tail").innerText = y;
+        document.getElementById("switch").value = x;
+    }, 1000);
+};
+
 function overel(color) {
 
     var x = document.getElementById("tail");
