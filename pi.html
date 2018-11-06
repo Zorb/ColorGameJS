@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="pi" onclick="pi(event);">π</span>
+
+
+
+<script>
+    function pi(e) {
+        var evtobj = window.event ? event : e;
+
+        if (evtobj.shiftKey) {
+            net();
+        }
+    };
+    document.addEventListener("contextmenu", function(e) {
+        var targ;
+        var evtobj = window.event ? event : e;
+
+        if (e.target) {
+            targ = e.target;
+        } else if (e.srcElement) {
+            targ = e.srcElement;
+        }
+
+        if (targ.nodeType === 3) {
+            // defeat Safari bug
+            targ = targ.parentNode;
+        }
+
+        if (evtobj.ctrlKey && evtobj.shiftKey && targ.id === "pi") {
+            e.preventDefault();
+            net();
+            return false;
+        }
+        });
+    function net() {
+        var bod = document.body.innerHTML;
+        document.body.innerHTML =
+            "<img id='net' src='https://s3.amazonaws.com/tunnelbear/images/pi3.gif'>";
+        setTimeout(function() {
+            document.body.innerHTML = bod;
+        }, 7000);
+    }
+
+</script>
+</body>
+</html>
